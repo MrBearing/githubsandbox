@@ -10,3 +10,10 @@ git switch develop
 ```
 
 でブランチ切り替え
+
+
+```
+git switch -c some_branch
+```
+
+でブランチ作成して切り替え

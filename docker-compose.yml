@@ -1,0 +1,22 @@
+version: '3'
+services:
+  app1:
+    image: alpine
+    command: ["sh", "-c", "ip addr show eth0 && sleep 600"]
+    networks:
+      test_net:
+        ipv4_address: 172.18.0.2
+
+  app2:
+    image: alpine
+    command: ["sh", "-c", "ip addr show eth0 && sleep 600"]
+    networks:
+      test_net:
+        ipv4_address: 172.18.0.3
+
+networks:
+  test_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16

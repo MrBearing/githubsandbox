@@ -3,7 +3,7 @@ name: Docker Communication Test
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   test:

@@ -3,7 +3,7 @@ name: Docker Communication Test
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   test:
@@ -22,6 +22,12 @@ jobs:
     - name: Build and run containers
       run: docker-compose up -d
 
+    - name: Wait for containers to start
+      run: sleep 10  # コンテナが確実に起動するのを待つ
+
+    - name: List running containers
+      run: docker ps -a  # 全コンテナが起動しているか確認
+
     - name: Show IP addresses
       run: |
         docker exec app1 ip addr show eth0
@@ -29,8 +35,8 @@ jobs:
 
     - name: Test communication between containers
       run: |
-        docker exec app1 ping -c 4 172.18.0.3  # Ping from app1 to app2
-        docker exec app2 ping -c 4 172.18.0.2  # Ping from app2 to app1
+        docker exec app1 ping -c 4 172.18.0.3  # app1 から app2 へのPing
+        docker exec app2 ping -c 4 172.18.0.2  # app2 から app1 へのPing
 
     - name: Tear down containers
       run: docker-compose down

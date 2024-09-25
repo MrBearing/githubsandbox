@@ -2,16 +2,16 @@ version: '3'
 services:
   app1:
     container_name: app1
-    image: ubuntu:latest  # Ubuntuの最新イメージを使用
-    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 && ip addr show eth0 && sleep 600"]
+    image: ubuntu:latest
+    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
     networks:
       test_net:
         ipv4_address: 172.18.0.2
 
   app2:
     container_name: app2
-    image: ubuntu:latest  # Ubuntuの最新イメージを使用
-    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 && ip addr show eth0 && sleep 600"]
+    image: ubuntu:latest
+    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
     networks:
       test_net:
         ipv4_address: 172.18.0.3

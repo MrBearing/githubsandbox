@@ -23,10 +23,15 @@ jobs:
       run: docker-compose up -d
 
     - name: Wait for containers to start
-      run: sleep 10  # コンテナが確実に起動するのを待つ
+      run: sleep 20  # コンテナが確実に起動するのを待つ時間を長くする
 
     - name: List running containers
       run: docker ps -a  # 全コンテナが起動しているか確認
+
+    - name: Show container logs  # コンテナのログを確認する
+      run: |
+        docker logs app1
+        docker logs app2
 
     - name: Show IP addresses
       run: |

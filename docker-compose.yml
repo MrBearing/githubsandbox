@@ -3,7 +3,12 @@ services:
   app1:
     container_name: app1
     image: osrf/ros:humble-desktop
-    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
+    command: >
+      bash -c "apt-get update &&
+      apt-get install -y iproute2 iputils-ping git wget build-essential gcc g++ libssl-dev libreadline-dev
+       zlib1g-dev make autoconf automake cmake pkg-config curl net-tools netcat python3-jinja2 &&
+      ip addr show eth0 &&
+      sleep 600"
     networks:
       test_net:
         ipv4_address: 172.18.0.2
@@ -11,7 +16,12 @@ services:
   app2:
     container_name: app2
     image: osrf/ros:humble-desktop
-    command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
+    command: >
+      bash -c "apt-get update &&
+      apt-get install -y iproute2 iputils-ping git wget build-essential gcc g++ libssl-dev libreadline-dev
+       zlib1g-dev make autoconf automake cmake pkg-config curl net-tools netcat python3-jinja2 &&
+      ip addr show eth0 &&
+      sleep 600"
     networks:
       test_net:
         ipv4_address: 172.18.0.3

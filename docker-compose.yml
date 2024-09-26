@@ -2,7 +2,7 @@ version: '3'
 services:
   app1:
     container_name: app1
-    image: ubuntu:latest
+    image: osrf/ros:humble-desktop
     command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
     networks:
       test_net:
@@ -10,7 +10,7 @@ services:
 
   app2:
     container_name: app2
-    image: ubuntu:latest
+    image: osrf/ros:humble-desktop
     command: ["bash", "-c", "apt-get update && apt-get install -y iproute2 iputils-ping && ip addr show eth0 && sleep 600"]
     networks:
       test_net:
